@@ -12,7 +12,10 @@ export const datasourceoption: DataSourceOptions = {
     port: configService.get('DB_PORT'),
     synchronize: false,
     migrations: [`${__dirname}/migrations/*.ts`],
-    entities: [`dist/**/*.entity.js`]
+    entities: [`dist/**/*.entity.js`],
+    ssl: {
+        rejectUnauthorized: false, // This may be needed if your certificate is self-signed
+      },
 }
 
 export default new DataSource(datasourceoption)
